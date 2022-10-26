@@ -2,11 +2,9 @@ package entrega.data.data.controler;
 
 import dto.DTOagente;
 import dto.DTOrespuesta;
-import mgr.MGRAgente;
-import mgr.MGRAgenteIMP;
+import mgr.MgrAgente;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -14,12 +12,16 @@ import java.util.List;
 @RequestMapping(path = "/agente")
 public class ControlerAgente {
 
+    private MgrAgente mgrAgente ;
+
+    public ControlerAgente(MgrAgente mgrAgente){
+        this.mgrAgente = mgrAgente;
+    }
     @PostMapping(path = "/save")
     public @ResponseBody
     void save(@RequestBody DTOagente agente) {
-        MGRAgenteIMP manager = new MGRAgente();
         try {
-            manager.save(agente);
+            mgrAgente.save(agente);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,9 +31,9 @@ public class ControlerAgente {
     void delete(@RequestParam int  id){
     DTOagente dtOagente = new DTOagente();
     dtOagente.setId_agente(id);
-        MGRAgenteIMP manager = new MGRAgente();
+
         try {
-            manager.delete(dtOagente);
+            mgrAgente.delete(dtOagente);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -39,9 +41,9 @@ public class ControlerAgente {
 
     @PutMapping(path = "/update")
     void update(@RequestBody DTOagente agente) {
-        MGRAgenteIMP manager = new MGRAgente();
+
         try {
-            manager.save(agente);
+            mgrAgente.save(agente);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -50,10 +52,10 @@ public class ControlerAgente {
 
     @GetMapping(path = "/lista")
     public DTOrespuesta lista(){
-        MGRAgenteIMP manager = new MGRAgente();
+
         DTOrespuesta respuesta = new DTOrespuesta();
         try {
-            List<DTOagente> lista = manager.listado();
+            List<DTOagente> lista = mgrAgente.listado();
             respuesta.setData(lista);
             respuesta.setCodigo(0);
         } catch (Exception e) {

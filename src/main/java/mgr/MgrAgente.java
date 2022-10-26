@@ -4,7 +4,7 @@ import dto.DTOagente;
 
 import java.util.List;
 
-public interface MGRAgenteIMP {
+public interface MgrAgente {
 
     void save(DTOagente t);
 

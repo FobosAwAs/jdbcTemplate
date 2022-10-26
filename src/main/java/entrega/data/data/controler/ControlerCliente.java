@@ -4,8 +4,6 @@ import dto.DTOcliente;
 import mgr.MGRCliente;
 import mgr.MGRClienteIMP;
 import org.springframework.web.bind.annotation.*;
-import mgr.MGRAgente;
-import mgr.MGRAgenteIMP;
 
 
 @RestController

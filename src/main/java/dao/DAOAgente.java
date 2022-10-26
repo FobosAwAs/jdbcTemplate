@@ -5,7 +5,7 @@ import dto.DTOagente;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface DAOAgenteIMP {
+public interface DAOAgente {
 
     DTOagente get(DTOagente dtOagente);
 

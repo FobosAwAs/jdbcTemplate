@@ -1,11 +1,8 @@
 package mgr;
 
 import bd.ManagerConexion;
-import dao.DAOAgenteIMP;
 import dao.DAOClienteIMP;
-import dao.DAOagente;
 import dao.DAOcliente;
-import dto.DTOagente;
 import dto.DTOcliente;
 
 import java.sql.SQLException;
