@@ -1,6 +1,6 @@
-package mgr;
+package entrega.data.data.mgr;
 
-import dto.DTOagente;
+import entrega.data.data.dto.DTOagente;
 
 import java.util.List;
 

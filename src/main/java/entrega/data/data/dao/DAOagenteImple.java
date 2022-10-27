@@ -1,7 +1,7 @@
-package dao;
+package entrega.data.data.dao;
 
-import dto.DTOagente;
-import mapper.MapperAgentes;
+import entrega.data.data.dto.DTOagente;
+import entrega.data.data.mapper.MapperAgentes;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.sql.SQLException;
@@ -19,7 +19,7 @@ public class DAOagenteImple implements DAOAgente {
 
     @Override
     public void insert(DTOagente t) throws SQLException {
-        DTOagente k = (DTOagente) t;
+
         String insert = "insert into AGENTS (AGENT_CODE,AGENT_NAME,WORKING_AREA,PHONE_NO,COUNTRY) values (?,?,?,?,?)";
         jdbcTemplate.update(insert,
                 t.getId_agente(),

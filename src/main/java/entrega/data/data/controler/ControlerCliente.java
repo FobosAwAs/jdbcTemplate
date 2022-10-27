@@ -1,8 +1,8 @@
 package entrega.data.data.controler;
 
-import dto.DTOcliente;
-import mgr.MGRCliente;
-import mgr.MGRClienteIMP;
+import entrega.data.data.dto.DTOcliente;
+import entrega.data.data.mgr.MgrClienteImple;
+import entrega.data.data.mgr.MgrCliente;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class ControlerCliente {
     @PostMapping(path = "/save")
     void save(@RequestBody DTOcliente cliente) {
-        MGRClienteIMP manager = new MGRCliente();
+        MgrCliente manager = new MgrClienteImple();
         try {
             manager.save(cliente);
         } catch (Exception e) {
@@ -24,7 +24,7 @@ public class ControlerCliente {
     void delete(@RequestParam("id") int  id) {
         DTOcliente cliente = new DTOcliente();
         cliente.setCode_cliente(id);
-        MGRClienteIMP manager = new MGRCliente();
+        MgrCliente manager = new MgrClienteImple();
         try {
             manager.delete(cliente);
         } catch (Exception e) {
@@ -34,7 +34,7 @@ public class ControlerCliente {
 
     @PutMapping(path = "/update")
     void update(@RequestBody DTOcliente cliente) {
-        MGRClienteIMP manager = new MGRCliente();
+        MgrCliente manager = new MgrClienteImple();
         try {
             manager.save(cliente);
         } catch (Exception e) {

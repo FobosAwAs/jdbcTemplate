@@ -1,8 +1,8 @@
 package entrega.data.data.controler;
 
-import dto.DTOagente;
-import dto.DTOrespuesta;
-import mgr.MgrAgente;
+import entrega.data.data.dto.DTOagente;
+import entrega.data.data.dto.DTOrespuesta;
+import entrega.data.data.mgr.MgrAgente;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,12 +10,13 @@ import java.util.List;
 @RestController
 @CrossOrigin("*")
 @RequestMapping(path = "/agente")
+
 public class ControlerAgente {
 
     private MgrAgente mgrAgente ;
 
     public ControlerAgente(MgrAgente mgrAgente){
-        this.mgrAgente = mgrAgente;
+         this.mgrAgente = mgrAgente;
     }
     @PostMapping(path = "/save")
     public @ResponseBody

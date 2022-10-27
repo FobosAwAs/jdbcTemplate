@@ -1,7 +1,8 @@
-package mgr;
+package entrega.data.data.mgr;
 
-import dao.*;
-import dto.DTOagente;
+
+import entrega.data.data.dao.DAOAgente;
+import entrega.data.data.dto.DTOagente;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,6 +1,6 @@
-package dao;
+package entrega.data.data.dao;
 
-import dto.DTOagente;
+import entrega.data.data.dto.DTOagente;
 
 import java.sql.SQLException;
 import java.util.List;

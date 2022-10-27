@@ -1,14 +1,14 @@
-package dao;
+package entrega.data.data.dao;
 
 import bd.ManagerConexion;
-import dto.DTOcliente;
+import entrega.data.data.dto.DTOcliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DAOcliente implements DAOClienteIMP {
+public class DAOClienteImple implements DAOCliente {
 
     ManagerConexion con = ManagerConexion.getIntance();
 
@@ -61,7 +61,7 @@ public class DAOcliente implements DAOClienteIMP {
 
             pstm.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(DAOcliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOClienteImple.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -1,14 +1,14 @@
-package dao;
+package entrega.data.data.dao;
 
 import bd.ManagerConexion;
-import dto.DTOorden;
+import entrega.data.data.dto.DTOorden;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DAOorden implements DAOOrdenIMP {
+public class DAOOrdenImple implements DAOOrden {
 
     ManagerConexion con = ManagerConexion.getIntance();
 
@@ -63,7 +63,7 @@ public class DAOorden implements DAOOrdenIMP {
 
             pstm.executeUpdate();
         } catch (SQLException ex) {
-            Logger.getLogger(DAOcliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOClienteImple.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -76,7 +76,7 @@ public class DAOorden implements DAOOrdenIMP {
             pstm.setDouble(1, t.getId_orden());
             
         } catch (SQLException ex) {
-            Logger.getLogger(DAOcliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DAOClienteImple.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

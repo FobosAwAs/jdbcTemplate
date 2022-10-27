@@ -1,11 +1,10 @@
-package dao;
+package entrega.data.data.dao;
 
-import dto.DTOcliente;
-import dto.DTOorden;
+import entrega.data.data.dto.DTOorden;
 
 import java.sql.SQLException;
 
-public interface DAOOrdenIMP {
+public interface DAOOrden {
 
     DTOorden get(DTOorden t);
 

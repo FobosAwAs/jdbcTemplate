@@ -1,24 +1,24 @@
-package mgr;
+package entrega.data.data.mgr;
 
 import bd.ManagerConexion;
-import dao.DAOOrdenIMP;
-import dao.DAOorden;
-import dto.DTOorden;
+import entrega.data.data.dao.DAOCliente;
+import entrega.data.data.dao.DAOClienteImple;
+import entrega.data.data.dto.DTOcliente;
 
 import java.sql.SQLException;
 
-public class MGROrden implements MGROrdenIMP {
+public class MgrClienteImple implements MgrCliente {
 
-    DAOOrdenIMP agentevar = new DAOorden();
+    DAOCliente agentevar = new DAOClienteImple();
 
     @Override
-    public void save(DTOorden t) {
+    public void save(DTOcliente t) {
 
         ManagerConexion managerConexion = ManagerConexion.getIntance();
         managerConexion.reconectar();
 
 
-        DTOorden awas = agentevar.get(t);
+        DTOcliente awas = agentevar.get(t);
 
         if (awas == null) {
             try {
@@ -35,11 +35,11 @@ public class MGROrden implements MGROrdenIMP {
     }
 
     @Override
-    public void delete(DTOorden t) {
+    public void delete(DTOcliente t) {
         ManagerConexion managerConexion = ManagerConexion.getIntance();
         managerConexion.reconectar();
 
-        DTOorden awas = agentevar.get(t);
+        DTOcliente awas = agentevar.get(t);
         try {
             if (awas == null) {
                 System.out.println("el agente no existe");

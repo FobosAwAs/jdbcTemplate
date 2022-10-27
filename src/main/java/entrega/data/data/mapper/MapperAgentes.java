@@ -1,6 +1,6 @@
-package mapper;
+package entrega.data.data.mapper;
 
-import dto.DTOagente;
+import entrega.data.data.dto.DTOagente;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

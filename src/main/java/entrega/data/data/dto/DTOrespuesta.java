@@ -1,4 +1,4 @@
-package dto;
+package entrega.data.data.dto;
 
 public class DTOrespuesta {
     private int codigo;

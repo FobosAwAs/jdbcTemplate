@@ -1,10 +1,10 @@
-package dao;
+package entrega.data.data.dao;
 
-import dto.DTOcliente;
+import entrega.data.data.dto.DTOcliente;
 
 import java.sql.SQLException;
 
-public interface DAOClienteIMP {
+public interface DAOCliente {
 
     DTOcliente get(DTOcliente t);
 
