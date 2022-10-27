@@ -1,57 +1,62 @@
 package entrega.data.data.mgr;
 
-import bd.ManagerConexion;
 import entrega.data.data.dao.DAOOrden;
-import entrega.data.data.dao.DAOOrdenImple;
 import entrega.data.data.dto.DTOorden;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
+import java.util.List;
 
+@Transactional
+@Service
 public class MgrOrdenImple implements MgrOrden {
 
-    DAOOrden agentevar = new DAOOrdenImple();
+    DAOOrden daoOrden;
+
+    public MgrOrdenImple(DAOOrden daoOrden) {
+        this.daoOrden = daoOrden;
+    }
 
     @Override
     public void save(DTOorden t) {
 
-        ManagerConexion managerConexion = ManagerConexion.getIntance();
-        managerConexion.reconectar();
 
-
-        DTOorden awas = agentevar.get(t);
+        DTOorden awas = daoOrden.get(t);
 
         if (awas == null) {
             try {
-                agentevar.insert(t);
-                managerConexion.commit();
+                daoOrden.insert(t);
             } catch (SQLException ex) {
-                managerConexion.rollback();
             }
         } else {
-            agentevar.update(t);
-            managerConexion.commit();
+            daoOrden.update(t);
         }
-        managerConexion.close();
     }
 
     @Override
     public void delete(DTOorden t) {
-        ManagerConexion managerConexion = ManagerConexion.getIntance();
-        managerConexion.reconectar();
-
-        DTOorden awas = agentevar.get(t);
+        DTOorden awas = daoOrden.get(t);
         try {
             if (awas == null) {
                 System.out.println("el agente no existe");
             } else {
-                agentevar.eliminar(t);
-                managerConexion.commit();
+                daoOrden.eliminar(t);
             }
         } catch (Exception e) {
-            managerConexion.rollback();
+            e.printStackTrace();
         }
-        managerConexion.close();
+    }
 
+    @Override
+    public List<DTOorden> listado() {
+        try {
+            return daoOrden.listado();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
+

@@ -13,11 +13,11 @@ import java.util.List;
 @Service
 public class MgrAgenteImple implements MgrAgente {
 
-   DAOAgente daoAgente;
+    DAOAgente daoAgente;
 
-  public MgrAgenteImple(DAOAgente daoAgente){
-      this.daoAgente = daoAgente;
-  }
+    public MgrAgenteImple(DAOAgente daoAgente) {
+        this.daoAgente = daoAgente;
+    }
 
     @Override
     public void save(DTOagente t) {
@@ -59,14 +59,12 @@ public class MgrAgenteImple implements MgrAgente {
 
     @Override
     public List<DTOagente> listado() {
-
         try {
             return daoAgente.listado();
         } catch (Exception e) {
 
-        } finally {
-
         }
         return null;
     }
+
 }

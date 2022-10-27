@@ -1,6 +1,7 @@
 package entrega.data.data.mgr;
 
 
+import entrega.data.data.dao.DAOCliente;
 import entrega.data.data.dao.DAOClienteImple;
 import entrega.data.data.dto.DTOagente;
 import entrega.data.data.dto.DTOcliente;
@@ -13,7 +14,7 @@ import java.util.List;
 @Service
 public class MgrClienteImple implements MgrCliente {
 
-    DAOClienteImple daoCliente;
+    DAOCliente daoCliente;
 
     public MgrClienteImple(DAOClienteImple daoCliente){
         this.daoCliente = daoCliente;
