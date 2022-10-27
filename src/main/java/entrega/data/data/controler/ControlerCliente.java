@@ -1,20 +1,29 @@
 package entrega.data.data.controler;
 
+import entrega.data.data.dto.DTOagente;
 import entrega.data.data.dto.DTOcliente;
+import entrega.data.data.dto.DTOrespuesta;
 import entrega.data.data.mgr.MgrClienteImple;
 import entrega.data.data.mgr.MgrCliente;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping(path = "/cliente")
 public class ControlerCliente {
+    private MgrCliente mgrCliente;
+
+    public ControlerCliente(MgrCliente mgrCliente){
+        this.mgrCliente = mgrCliente;
+    }
+
     @PostMapping(path = "/save")
     void save(@RequestBody DTOcliente cliente) {
-        MgrCliente manager = new MgrClienteImple();
         try {
-            manager.save(cliente);
+            mgrCliente.save(cliente);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -24,9 +33,8 @@ public class ControlerCliente {
     void delete(@RequestParam("id") int  id) {
         DTOcliente cliente = new DTOcliente();
         cliente.setCode_cliente(id);
-        MgrCliente manager = new MgrClienteImple();
         try {
-            manager.delete(cliente);
+            mgrCliente.delete(cliente);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -34,13 +42,26 @@ public class ControlerCliente {
 
     @PutMapping(path = "/update")
     void update(@RequestBody DTOcliente cliente) {
-        MgrCliente manager = new MgrClienteImple();
         try {
-            manager.save(cliente);
+            mgrCliente.save(cliente);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
 
+    @GetMapping(path = "/lista")
+    public DTOrespuesta lista(){
+
+        DTOrespuesta respuesta = new DTOrespuesta();
+        try {
+            List<DTOcliente> lista = mgrCliente.listado();
+            respuesta.setData(lista);
+            respuesta.setCodigo(0);
+        } catch (Exception e) {
+            respuesta.setCodigo(1);
+            respuesta.setMensaje(e.getMessage());
+        }
+        return respuesta;
     }
 
 }

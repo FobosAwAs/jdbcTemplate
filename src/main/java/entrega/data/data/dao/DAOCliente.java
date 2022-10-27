@@ -1,8 +1,10 @@
 package entrega.data.data.dao;
 
+import entrega.data.data.dto.DTOagente;
 import entrega.data.data.dto.DTOcliente;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface DAOCliente {
 
@@ -13,4 +15,6 @@ public interface DAOCliente {
     void update(DTOcliente t);
 
     void eliminar(DTOcliente t);
+
+    public List<DTOcliente> listado();
 }

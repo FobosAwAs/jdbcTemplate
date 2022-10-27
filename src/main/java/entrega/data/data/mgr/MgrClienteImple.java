@@ -1,57 +1,62 @@
 package entrega.data.data.mgr;
 
-import bd.ManagerConexion;
-import entrega.data.data.dao.DAOCliente;
+
 import entrega.data.data.dao.DAOClienteImple;
+import entrega.data.data.dto.DTOagente;
 import entrega.data.data.dto.DTOcliente;
-
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.sql.SQLException;
+import java.util.List;
 
+@Transactional
+@Service
 public class MgrClienteImple implements MgrCliente {
 
-    DAOCliente agentevar = new DAOClienteImple();
+    DAOClienteImple daoCliente;
 
+    public MgrClienteImple(DAOClienteImple daoCliente){
+        this.daoCliente = daoCliente;
+    }
     @Override
     public void save(DTOcliente t) {
-
-        ManagerConexion managerConexion = ManagerConexion.getIntance();
-        managerConexion.reconectar();
-
-
-        DTOcliente awas = agentevar.get(t);
-
+        DTOcliente awas = daoCliente.get(t);
         if (awas == null) {
             try {
-                agentevar.insert(t);
-                managerConexion.commit();
+                daoCliente.insert(t);
             } catch (SQLException ex) {
-                managerConexion.rollback();
+                ex.printStackTrace();
             }
         } else {
-            agentevar.update(t);
-            managerConexion.commit();
+            daoCliente.update(t);
         }
-        managerConexion.close();
     }
 
     @Override
     public void delete(DTOcliente t) {
-        ManagerConexion managerConexion = ManagerConexion.getIntance();
-        managerConexion.reconectar();
-
-        DTOcliente awas = agentevar.get(t);
+        DTOcliente awas = daoCliente.get(t);
         try {
             if (awas == null) {
                 System.out.println("el agente no existe");
             } else {
-                agentevar.eliminar(t);
-                managerConexion.commit();
+                daoCliente.eliminar(t);
             }
         } catch (Exception e) {
-            managerConexion.rollback();
+            e.printStackTrace();
         }
-        managerConexion.close();
+    }
 
+    @Override
+    public List<DTOcliente> listado() {
+
+        try {
+            return daoCliente.listado();
+        } catch (Exception e) {
+
+        } finally {
+
+        }
+        return null;
     }
 
 }

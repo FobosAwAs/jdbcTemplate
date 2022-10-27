@@ -60,6 +60,16 @@ public class DAOagenteImple implements DAOAgente {
         }
     }
 
+    @Override
+    public DTOagente get(DTOagente t) {
+        String select = "select * from AGENTS where AGENT_CODE = ?";
+        try {
+            return jdbcTemplate.queryForObject(select, new MapperAgentes(), t);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Override
     public List<DTOagente> listado() {
@@ -71,17 +81,5 @@ public class DAOagenteImple implements DAOAgente {
             e.printStackTrace();
         }
         return lista;
-    }
-
-
-    @Override
-    public DTOagente get(DTOagente t) {
-        String select = "select * from AGENTS where AGENT_CODE = ?";
-        try {
-            return jdbcTemplate.queryForObject(select, new MapperAgentes(), t);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }
